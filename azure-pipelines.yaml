@@ -16,6 +16,7 @@ extends:
     targetFeed: mobisys-internal
     packageType: npm
     requireNvmrc: true
+    artifactsDirectoryToPublish: $(Build.ArtifactStagingDirectory)
     prePublishSteps:
       - task: CopyFiles@2
         inputs:
@@ -23,4 +24,4 @@ extends:
           contents: |
             **/*.tgz
             !**/node_modules/**
-          targetFolder: $(Build.ArtifactStagingDirectory)
+          targetFolder: $(artifactsDirectoryToPublish)
