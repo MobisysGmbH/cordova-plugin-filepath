@@ -1,0 +1,26 @@
+resources:
+  repositories:
+    - repository: devops # identifier (A-Z, a-z, 0-9, and underscore)
+      type: github # see the following "Type" topic
+      name: MobisysGmbh/devops-templates # repository name (format depends on `type`)
+      endpoint: MobisysGmbH # name of the service connection to use (for types that aren't Azure Repos)
+      ref: refs/heads/release/v6 # defaults to refs/heads/main if ref is not set
+
+trigger: none
+pr: none
+
+extends:
+  template: /yaml/kickstarter-templates/package-pipeline.yml@devops
+  parameters:
+    vmImage: ubuntu-latest
+    targetFeed: mobisys-internal
+    packageType: npm
+    requireNvmrc: true
+    prePublishSteps:
+      - task: CopyFiles@2
+        inputs:
+          sourceFolder: $(applicationRootPath)
+          contents: |
+            **/*.tgz
+            !**/node_modules/**
+          targetFolder: $(Build.ArtifactStagingDirectory)
