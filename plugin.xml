@@ -16,7 +16,7 @@
   under the License.
 -->
 
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-filepath" version="1.6.0">
+<plugin version="1.6.1" id="cordova-plugin-filepath" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>cordova-plugin-filepath</name>
     <description>Resolve native file paths from content URLs for Cordova platforms</description>
     <license>Apache 2.0</license>
@@ -42,7 +42,7 @@
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/*">
-            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
         </config-file>
 
         <source-file src="src/android/FilePath.java" target-dir="src/com/hiddentao/cordova/filepath"/>
