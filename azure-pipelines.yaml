@@ -4,7 +4,7 @@ resources:
       type: github # see the following "Type" topic
       name: MobisysGmbh/devops-templates # repository name (format depends on `type`)
       endpoint: MobisysGmbH # name of the service connection to use (for types that aren't Azure Repos)
-      ref: refs/heads/release/v6 # defaults to refs/heads/main if ref is not set
+      ref: refs/heads/release/v7 # defaults to refs/heads/main if ref is not set
 
 trigger: none
 pr: none
