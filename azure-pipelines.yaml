@@ -4,7 +4,7 @@ resources:
       type: github # see the following "Type" topic
       name: MobisysGmbh/devops-templates # repository name (format depends on `type`)
       endpoint: MobisysGmbH # name of the service connection to use (for types that aren't Azure Repos)
-      ref: refs/heads/release/v7 # defaults to refs/heads/main if ref is not set
+      ref: refs/heads/release/v8 # defaults to refs/heads/main if ref is not set
 
 trigger: none
 pr: none
@@ -16,13 +16,11 @@ extends:
     targetFeed: mobisys-internal
     packageType: npm
     requireNvmrc: true
-    artifactsDirectoryToPublish: $(Build.ArtifactStagingDirectory)
     allowedPublishingBranches: refs/heads/master
     prePublishSteps:
       - task: CopyFiles@2
         inputs:
-          sourceFolder: $(applicationRootPath)
-          contents: |
-            **/*.tgz
-            !**/node_modules/**
-          targetFolder: $(artifactsDirectoryToPublish)
+          Contents: 'mobisys-internal-cordova-plugin-filepath-*.tgz'
+          TargetFolder: 'publish'
+          CleanTargetFolder: true
+    artifactsDirectoryToPublish: $(Build.SourcesDirectory)/publish
