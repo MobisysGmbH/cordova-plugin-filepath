@@ -1,3 +1,11 @@
+# 1.6.2
+
+* chore: fixed plugin id in plugin.xml to match scope in package.json
+
+# 1.6.1
+
+* chore: plugin scope to @mobisys-internal for publishing purposes
+
 # 1.6.0
 
 * [#70](https://github.com/hiddentao/cordova-plugin-filepath/pull/70)
